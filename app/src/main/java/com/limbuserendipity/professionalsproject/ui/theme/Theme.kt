@@ -16,12 +16,17 @@ private val DarkColorScheme = darkColorScheme(
     secondary = PurpleGrey80,
     tertiary = Pink80
 )
-
+// App color scheme
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
+    primary = Accent,
+    secondary = Accent,
+    tertiary = Accent,
+    background = Background,
+    surface = Block,
+    error = Red,
+    // Цвета для текста и иконок внутри блока с цветом
+    onPrimary = Block,
+    onError = Block
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
     surface = Color(0xFFFFFBFE),
@@ -35,9 +40,12 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun ProfessionalsProjectTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    // убираем темный режим
+    //darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = false,
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    // Убираем динамические цвета по умолчанию
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
