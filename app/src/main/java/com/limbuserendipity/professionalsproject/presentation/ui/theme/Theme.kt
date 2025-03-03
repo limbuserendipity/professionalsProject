@@ -1,4 +1,4 @@
-package com.limbuserendipity.professionalsproject.ui.theme
+package com.limbuserendipity.professionalsproject.presentation.ui.theme
 
 import android.os.Build
 import androidx.compose.material3.MaterialTheme
