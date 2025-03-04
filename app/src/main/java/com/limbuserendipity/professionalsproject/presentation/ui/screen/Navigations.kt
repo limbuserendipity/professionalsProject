@@ -1,17 +1,18 @@
 package com.limbuserendipity.professionalsproject.presentation.ui.screen
 
 import androidx.compose.runtime.Composable
+import com.limbuserendipity.professionalsproject.presentation.ui.screen.sign_in.SignInContent
 
 @Composable
 fun Navigation(){
-    val navState = NavState.SIGIN
+    val navState = NavState.SIGNIN
     when(navState){
-        NavState.SIGIN -> {
-
+        NavState.SIGNIN -> {
+            SignInContent()
         }
     }
 }
 
 enum class NavState{
-    SIGIN
+    SIGNIN
 }
