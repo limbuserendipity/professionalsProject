@@ -27,10 +27,21 @@ class SignInViewModel : ViewModel(){
     fun authentication(){
         val isEmailValid = checkEmailValidity(state.value.email)
         val isEmptyString = checkEmptyString(state.value.email, state.value.password)
+
+        if(isEmptyString || !isEmailValid){
+            showDialog()
+            return
+        }else{
+
+        }
     }
 
     fun showPassword(){
         updateState(state.value.copy(isPasswordVisible = !state.value.isPasswordVisible))
+    }
+
+    fun showDialog(){
+        updateState(state.value.copy(isDialogVisible = !state.value.isDialogVisible))
     }
 
     private fun checkEmailValidity(email : String): Boolean {
@@ -63,7 +74,7 @@ class SignInViewModel : ViewModel(){
         return isValid
     }
 
-    fun checkEmptyString(email: String, password: String) : Boolean{
+    private fun checkEmptyString(email: String, password: String) : Boolean{
         return email.isEmpty() || password.isEmpty()
     }
 

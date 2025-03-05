@@ -1,12 +1,18 @@
 package com.limbuserendipity.professionalsproject.presentation.ui.screen.sign_in
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -24,6 +30,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import com.limbuserendipity.professionalsproject.R
 import com.limbuserendipity.professionalsproject.presentation.ui.component.AppButton
 import com.limbuserendipity.professionalsproject.presentation.ui.theme.eyeClose
@@ -42,6 +50,8 @@ fun SignInScreen(
             email = state.value.email,
             password = state.value.password,
             isPasswordVisible = state.value.isPasswordVisible,
+            isDialogVisible = state.value.isDialogVisible,
+            onDialogDismiss = viewmodel::showDialog,
             onUpdateEmail = viewmodel::updateEmail,
             onUpdatePassword = viewmodel::updatePassword,
             onUpdatePasswordVisible = viewmodel::showPassword,
@@ -55,6 +65,8 @@ fun SignInContent(
     email: String,
     password: String,
     isPasswordVisible: Boolean,
+    isDialogVisible : Boolean,
+    onDialogDismiss : () -> Unit,
     onUpdateEmail: (String) -> Unit,
     onUpdatePassword: (String) -> Unit,
     onUpdatePasswordVisible: () -> Unit,
@@ -94,5 +106,28 @@ fun SignInContent(
             text = stringResource(R.string.sign_In),
             onClick = onAuthClick
         )
+
+        if(isDialogVisible){
+            Dialog(
+                onDismissRequest = onDialogDismiss,
+            ) {
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .padding(20.dp)
+                        .fillMaxWidth()
+                        .height(196.dp)
+                        .background(
+                            color = MaterialTheme.colorScheme.surface,
+                            shape = RoundedCornerShape(16.dp)
+                        )
+                ) {
+                    Text(
+                        text = "Ваш email или password не true"
+                    )
+                }
+            }
+        }
+
     }
 }

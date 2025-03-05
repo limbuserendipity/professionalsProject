@@ -5,5 +5,6 @@ data class SignInState(
     var email : String = "",
     var password : String = "",
     var isEmailValid : Boolean? = null,
-    var isPasswordVisible : Boolean = false
+    var isPasswordVisible : Boolean = false,
+    var isDialogVisible : Boolean = false
 )
