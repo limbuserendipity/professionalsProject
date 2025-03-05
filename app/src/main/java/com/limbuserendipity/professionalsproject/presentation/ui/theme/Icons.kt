@@ -4,6 +4,15 @@ import com.limbuserendipity.professionalsproject.R
 
 // Просто файл с путями иконок для удобства
 
+val favoritePath = R.drawable.favorite
+val favoriteFill = R.drawable.favorite_fill
+val back = R.drawable.back
+val cart = R.drawable.cart
+val emailOtp = R.drawable.email_otp
+val eyeClose = R.drawable.eye_close
+val eyeOpen = R.drawable.eye_open
+val policyCheck = R.drawable.policy_check
+val sliders = R.drawable.sliders
 val arrowDownPath = R.drawable.arrow_down
 val callPath = R.drawable.call
 val clockPath = R.drawable.clock
