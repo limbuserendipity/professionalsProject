@@ -2,10 +2,13 @@ package com.limbuserendipity.professionalsproject.presentation.ui.screen.sign_in
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.limbuserendipity.professionalsproject.domain.usecase.AuthenticationUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-class SignInViewModel : ViewModel(){
+class SignInViewModel(
+    authenticationUseCase: AuthenticationUseCase
+) : ViewModel(){
 
     private val _state = MutableStateFlow(SignInState())
     val state get() = _state

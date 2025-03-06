@@ -7,7 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStore
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.Navigation
 import com.limbuserendipity.professionalsproject.presentation.ui.theme.ProfessionalsProjectTheme
 
@@ -18,8 +20,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             ProfessionalsProjectTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding -> innerPadding
-                    val provider = ViewModelProvider(this)
-                    Navigation(provider = provider)
+                    Navigation(this)
+
                 }
             }
         }
