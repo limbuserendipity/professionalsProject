@@ -35,7 +35,7 @@ class SignInViewModel(
             showDialog()
             return
         }else{
-
+            updateState(newState = state.value.copy(isEmailValid = true))
         }
     }
 

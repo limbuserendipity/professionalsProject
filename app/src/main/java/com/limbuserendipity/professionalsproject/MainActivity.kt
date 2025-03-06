@@ -21,7 +21,6 @@ class MainActivity : ComponentActivity() {
             ProfessionalsProjectTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding -> innerPadding
                     Navigation(this)
-
                 }
             }
         }

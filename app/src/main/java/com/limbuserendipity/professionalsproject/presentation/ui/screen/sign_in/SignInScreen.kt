@@ -44,6 +44,10 @@ fun SignInScreen(
 ) {
     val state = viewmodel.state.collectAsState()
 
+    if(state.value.isEmailValid == true){
+        toHomeScreen()
+    }
+
     Surface(
     ) {
         SignInContent(
