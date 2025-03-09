@@ -36,12 +36,14 @@ fun Navigation(owner: ViewModelStoreOwner) {
 
     when(navState){
         NavState.SIGN_IN -> {
-            SignInScreen(
-                viewmodel = viewModel,
-                toHomeScreen = {
-                    navState = NavState.SPLASH
-                }
-            )
+//            SignInScreen(
+//                viewmodel = viewModel,
+//                toHomeScreen = {
+//                    navState = NavState.SPLASH
+//                }
+//            )
+
+            HomeScreen()
         }
         NavState.SPLASH -> {
             SplashScreen(
