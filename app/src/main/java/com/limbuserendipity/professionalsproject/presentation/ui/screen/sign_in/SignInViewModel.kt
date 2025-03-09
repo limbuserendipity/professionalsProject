@@ -19,14 +19,6 @@ class SignInViewModel(
         }
     }
 
-    fun updateEmail(email : String){
-        updateState(state.value.copy(email = email))
-    }
-
-    fun updatePassword(password : String){
-        updateState(state.value.copy(password = password))
-    }
-
     fun authentication(){
         val isEmailValid = checkEmailValidity(state.value.email)
         val isEmptyString = checkEmptyString(state.value.email, state.value.password)

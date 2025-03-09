@@ -10,61 +10,61 @@ import com.limbuserendipity.professionalsproject.R
 // https://developer.android.com/develop/ui/compose/designsystems/material3
 val newPeninimMtFont = Font(R.font.new_peninim_mt)
 
-val Typography = Typography(
-    bodyLarge = TextStyle(
+val AppTypography = Typography(
+    bodyLarge = Typography().bodyLarge.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    displayLarge = TextStyle(
+    displayLarge = Typography().displayLarge.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    displayMedium = TextStyle(
+    displayMedium = Typography().displayMedium.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    displaySmall = TextStyle(
+    displaySmall = Typography().displaySmall.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    headlineLarge = TextStyle(
+    headlineLarge = Typography().headlineLarge.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    headlineSmall = TextStyle(
+    headlineSmall = Typography().headlineSmall.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    titleLarge = TextStyle(
+    titleLarge = Typography().titleLarge.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    titleMedium = TextStyle(
+    titleMedium = Typography().titleMedium.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    titleSmall = TextStyle(
+    titleSmall = Typography().titleSmall.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    bodyMedium = TextStyle(
+    bodyMedium = Typography().bodyMedium.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    bodySmall = TextStyle(
+    bodySmall = Typography().bodySmall.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    labelLarge = TextStyle(
+    labelLarge = Typography().labelLarge.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    labelMedium = TextStyle(
+    labelMedium = Typography().labelMedium.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
     ),
-    labelSmall = TextStyle(
+    labelSmall = Typography().labelSmall.copy(
         fontFamily = FontFamily(newPeninimMtFont),
         color = Text
-    ),
+    )
 )

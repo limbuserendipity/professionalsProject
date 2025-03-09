@@ -16,11 +16,13 @@ import com.limbuserendipity.professionalsproject.domain.usecase.AuthenticationUs
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.home.HomeScreen
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.sign_in.SignInScreen
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.sign_in.SignInViewModel
+import com.limbuserendipity.professionalsproject.presentation.ui.screen.splash_screen.SplashContent
+import com.limbuserendipity.professionalsproject.presentation.ui.screen.splash_screen.SplashScreen
 
 @Composable
 fun Navigation(owner: ViewModelStoreOwner) {
     var navState by remember {
-        mutableStateOf(NavState.SIGNIN)
+        mutableStateOf(NavState.SIGN_IN)
     }
 
     val authUseCase = AuthenticationUseCase(RepositoryFactory.getAuthenticationRepositoryImpl())
@@ -32,7 +34,7 @@ fun Navigation(owner: ViewModelStoreOwner) {
     ).get(SignInViewModel::class.java)
 
     AnimatedVisibility(
-        visible = navState == NavState.SIGNIN,
+        visible = navState == NavState.SIGN_IN,
         enter = slideInHorizontally(),
         exit = slideOutHorizontally()
     ) {
@@ -48,13 +50,17 @@ fun Navigation(owner: ViewModelStoreOwner) {
         visible = navState == NavState.HOME,
         enter = slideInHorizontally()
     ) {
-        HomeScreen()
+        SplashScreen(
+            toOnboarding = {
+                navState = NavState.ONBOARDING
+            }
+        )
     }
 
 }
 
 enum class NavState {
-    SIGNIN, HOME
+    SIGN_IN, HOME, SPLASH, ONBOARDING
 }
 
 fun createFactory(

@@ -61,4 +61,5 @@
     <string name="your_name">Имя</string>
     <string name="last_name">Фамилия</string>
     <string name="save_now">Сохранить</string>
+    <string name="start">Начать</string>
 </resources>
