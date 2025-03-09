@@ -51,13 +51,9 @@ fun SignInScreen(
     Surface(
     ) {
         SignInContent(
-            email = state.value.email,
-            password = state.value.password,
             isPasswordVisible = state.value.isPasswordVisible,
             isDialogVisible = state.value.isDialogVisible,
             onDialogDismiss = viewmodel::showDialog,
-            onUpdateEmail = viewmodel::updateEmail,
-            onUpdatePassword = viewmodel::updatePassword,
             onUpdatePasswordVisible = viewmodel::showPassword,
             onAuthClick = viewmodel::authentication
         )
@@ -66,16 +62,19 @@ fun SignInScreen(
 
 @Composable
 fun SignInContent(
-    email: String,
-    password: String,
     isPasswordVisible: Boolean,
     isDialogVisible : Boolean,
     onDialogDismiss : () -> Unit,
-    onUpdateEmail: (String) -> Unit,
-    onUpdatePassword: (String) -> Unit,
     onUpdatePasswordVisible: () -> Unit,
-    onAuthClick: () -> Unit
+    onAuthClick: (String, String) -> Unit
 ) {
+
+    var email: String by remember {
+        mutableStateOf("")
+    }
+    var password: String by remember {
+        mutableStateOf("")
+    }
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -91,12 +90,16 @@ fun SignInContent(
         else PasswordVisualTransformation()
         TextField(
             value = email,
-            onValueChange = onUpdateEmail,
+            onValueChange = {
+                email = it
+            },
             singleLine = true,
         )
         TextField(
             value = password,
-            onValueChange = onUpdatePassword,
+            onValueChange = {
+                password = password
+            },
             visualTransformation = transformation,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             singleLine = true,
@@ -108,7 +111,9 @@ fun SignInContent(
         )
         AppButton(
             text = stringResource(R.string.sign_In),
-            onClick = onAuthClick
+            onClick = {
+                onAuthClick(email, password)
+            }
         )
 
         if(isDialogVisible){
