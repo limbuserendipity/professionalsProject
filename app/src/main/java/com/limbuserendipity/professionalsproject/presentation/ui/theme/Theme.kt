@@ -17,8 +17,8 @@ private val DarkColorScheme = darkColorScheme(
 // App color scheme
 private val LightColorScheme = lightColorScheme(
     primary = Accent,
-    secondary = Accent,
-    tertiary = Accent,
+    secondary = Red,
+    tertiary = Disable,
     background = Background,
     surface = Block,
     error = Red,

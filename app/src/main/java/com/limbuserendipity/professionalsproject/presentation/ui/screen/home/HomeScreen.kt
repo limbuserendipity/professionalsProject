@@ -5,7 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(
+
+){
     Text(
         text = "HomeScreen",
         fontSize = 72.sp

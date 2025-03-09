@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelStoreOwner
 import com.limbuserendipity.professionalsproject.data.factory.RepositoryFactory
 import com.limbuserendipity.professionalsproject.domain.usecase.AuthenticationUseCase
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.home.HomeScreen
+import com.limbuserendipity.professionalsproject.presentation.ui.screen.onboarding.OnboardingScreen
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.sign_in.SignInScreen
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.sign_in.SignInViewModel
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.splash_screen.SplashContent
@@ -33,30 +34,33 @@ fun Navigation(owner: ViewModelStoreOwner) {
         }
     ).get(SignInViewModel::class.java)
 
-    AnimatedVisibility(
-        visible = navState == NavState.SIGN_IN,
-        enter = slideInHorizontally(),
-        exit = slideOutHorizontally()
-    ) {
-        SignInScreen(
-            viewmodel = viewModel,
-            toHomeScreen = {
-                navState = NavState.HOME
-            }
-        )
+    when(navState){
+        NavState.SIGN_IN -> {
+            SignInScreen(
+                viewmodel = viewModel,
+                toHomeScreen = {
+                    navState = NavState.SPLASH
+                }
+            )
+        }
+        NavState.SPLASH -> {
+            SplashScreen(
+                toOnboarding = {
+                    navState = NavState.ONBOARDING
+                }
+            )
+        }
+        NavState.ONBOARDING -> {
+            OnboardingScreen(
+                toHomeScreen = {
+                    navState = NavState.HOME
+                }
+            )
+        }
+        NavState.HOME -> {
+            HomeScreen()
+        }
     }
-
-    AnimatedVisibility(
-        visible = navState == NavState.HOME,
-        enter = slideInHorizontally()
-    ) {
-        SplashScreen(
-            toOnboarding = {
-                navState = NavState.ONBOARDING
-            }
-        )
-    }
-
 }
 
 enum class NavState {

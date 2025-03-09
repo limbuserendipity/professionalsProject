@@ -98,7 +98,7 @@ fun SignInContent(
         TextField(
             value = password,
             onValueChange = {
-                password = password
+                password = it
             },
             visualTransformation = transformation,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
