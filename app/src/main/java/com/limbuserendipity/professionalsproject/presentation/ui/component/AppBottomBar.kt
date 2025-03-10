@@ -1,7 +1,6 @@
 package com.limbuserendipity.professionalsproject.presentation.ui.component
 
 import android.annotation.SuppressLint
-import android.app.Notification
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -45,6 +44,9 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.scaleMatrix
+import com.limbuserendipity.professionalsproject.presentation.ui.screen.NavState
+import com.limbuserendipity.professionalsproject.presentation.ui.theme.Accent
+import com.limbuserendipity.professionalsproject.presentation.ui.theme.Hint
 import com.limbuserendipity.professionalsproject.presentation.ui.theme.cartPath
 import com.limbuserendipity.professionalsproject.presentation.ui.theme.favoritePath
 import com.limbuserendipity.professionalsproject.presentation.ui.theme.homePath
@@ -55,10 +57,11 @@ import com.limbuserendipity.professionalsproject.presentation.ui.theme.profilePa
 @SuppressLint("ResourceType", "UnusedBoxWithConstraintsScope")
 @Composable
 fun AppBottomBar(
-    toHomeScreen : () -> Unit,
-    toFavoriteScreen : () -> Unit,
-    toNotificationScreen : () -> Unit,
-    toProfileScreen : () -> Unit
+    currentState: NavState,
+    toHomeScreen: () -> Unit,
+    toFavoriteScreen: () -> Unit,
+    toNotificationScreen: () -> Unit,
+    toProfileScreen: () -> Unit
 ) {
 
     val pathData = "M121.66,31.5C66.79,32.7 17.69,18.33 0,11V117H375V11C347.96,30.5 276.87,31 255.34,31C233.81,31 229.81,34 229.81,42.5C229.81,51 234.38,74.18 207.78,77.5C155.71,84 145.54,66.5 144.69,55.5C143.69,42.5 146.2,31.5 121.66,31.5Z"
@@ -153,7 +156,8 @@ fun AppBottomBar(
                 ) {
                     Icon(
                         painter = painterResource(homePath),
-                        contentDescription = "home"
+                        contentDescription = "home",
+                        tint = if(currentState == NavState.HOME) Accent else Hint
                     )
                 }
                 IconButton(
@@ -163,7 +167,8 @@ fun AppBottomBar(
                 ) {
                     Icon(
                         painter = painterResource(favoritePath),
-                        contentDescription = "favorite"
+                        contentDescription = "favorite",
+                        tint = if(currentState == NavState.FAVORITE) Accent else Hint
                     )
                 }
                 IconButton(
@@ -173,7 +178,8 @@ fun AppBottomBar(
                 ) {
                     Icon(
                         painter = painterResource(notificationPath),
-                        contentDescription = "notification"
+                        contentDescription = "notification",
+                        tint = if(currentState == NavState.NOTIFICATION) Accent else Hint
                     )
                 }
                 IconButton(
@@ -183,7 +189,8 @@ fun AppBottomBar(
                 ) {
                     Icon(
                         painter = painterResource(profilePath),
-                        contentDescription = "profile"
+                        contentDescription = "profile",
+                        tint = if(currentState == NavState.PROFILE) Accent else Hint
                     )
                 }
             }

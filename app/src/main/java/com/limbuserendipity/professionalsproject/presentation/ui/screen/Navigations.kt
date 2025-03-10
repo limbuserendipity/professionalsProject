@@ -1,6 +1,5 @@
 package com.limbuserendipity.professionalsproject.presentation.ui.screen
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -62,7 +61,7 @@ fun Navigation(owner: ViewModelStoreOwner) {
                 }
             )
         }
-        NavState.HOME -> {
+        NavState.HOME, NavState.FAVORITE, NavState.NOTIFICATION, NavState.PROFILE ->{
             Scaffold(
                 topBar = {
                     TopAppBar(
@@ -74,8 +73,9 @@ fun Navigation(owner: ViewModelStoreOwner) {
                 },
                 bottomBar = {
                     AppBottomBar(
+                        currentState = navState,
                         toHomeScreen = {
-
+                            navState = NavState.HOME
                         },
                         toFavoriteScreen = {
 
@@ -89,15 +89,17 @@ fun Navigation(owner: ViewModelStoreOwner) {
                     )
                 }
             ) { paddingValues ->
-                HomeScreen(paddingValues)
+                if(navState == NavState.HOME){
+                    HomeScreen(paddingValues)
+                }
+                // ... Другие экраны
             }
-
         }
     }
 }
 
 enum class NavState {
-    SIGN_IN, HOME, SPLASH, ONBOARDING
+    SIGN_IN, HOME, SPLASH, ONBOARDING, FAVORITE, NOTIFICATION ,PROFILE
 }
 
 fun createFactory(
