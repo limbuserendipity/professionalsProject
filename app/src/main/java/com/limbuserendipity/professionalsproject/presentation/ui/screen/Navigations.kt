@@ -1,25 +1,30 @@
 package com.limbuserendipity.professionalsproject.presentation.ui.screen
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.limbuserendipity.professionalsproject.data.factory.RepositoryFactory
 import com.limbuserendipity.professionalsproject.domain.usecase.AuthenticationUseCase
+import com.limbuserendipity.professionalsproject.presentation.ui.component.AppBottomBar
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.home.HomeScreen
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.onboarding.OnboardingScreen
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.sign_in.SignInScreen
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.sign_in.SignInViewModel
-import com.limbuserendipity.professionalsproject.presentation.ui.screen.splash_screen.SplashContent
 import com.limbuserendipity.professionalsproject.presentation.ui.screen.splash_screen.SplashScreen
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Navigation(owner: ViewModelStoreOwner) {
     var navState by remember {
@@ -58,7 +63,35 @@ fun Navigation(owner: ViewModelStoreOwner) {
             )
         }
         NavState.HOME -> {
-            HomeScreen()
+            Scaffold(
+                topBar = {
+                    TopAppBar(
+                        title = {
+                            Text(text = "Главная")
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                },
+                bottomBar = {
+                    AppBottomBar(
+                        toHomeScreen = {
+
+                        },
+                        toFavoriteScreen = {
+
+                        },
+                        toNotificationScreen = {
+
+                        },
+                        toProfileScreen = {
+
+                        }
+                    )
+                }
+            ) { paddingValues ->
+                HomeScreen(paddingValues)
+            }
+
         }
     }
 }

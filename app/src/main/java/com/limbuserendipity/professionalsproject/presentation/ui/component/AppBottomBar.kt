@@ -1,6 +1,7 @@
 package com.limbuserendipity.professionalsproject.presentation.ui.component
 
 import android.annotation.SuppressLint
+import android.app.Notification
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 
 import androidx.compose.runtime.Composable
@@ -52,7 +54,12 @@ import com.limbuserendipity.professionalsproject.presentation.ui.theme.profilePa
 
 @SuppressLint("ResourceType", "UnusedBoxWithConstraintsScope")
 @Composable
-fun AppBottomBar() {
+fun AppBottomBar(
+    toHomeScreen : () -> Unit,
+    toFavoriteScreen : () -> Unit,
+    toNotificationScreen : () -> Unit,
+    toProfileScreen : () -> Unit
+) {
 
     val pathData = "M121.66,31.5C66.79,32.7 17.69,18.33 0,11V117H375V11C347.96,30.5 276.87,31 255.34,31C233.81,31 229.81,34 229.81,42.5C229.81,51 234.38,74.18 207.78,77.5C155.71,84 145.54,66.5 144.69,55.5C143.69,42.5 146.2,31.5 121.66,31.5Z"
     val xmlWidth = 375f
@@ -139,26 +146,46 @@ fun AppBottomBar() {
                     .fillMaxWidth()
                     .height(106.dp)
             ) {
-                Icon(
-                    painter = painterResource(homePath),
-                    contentDescription = "Home"
-                )
-
-                Icon(
-                    painter = painterResource(favoritePath),
-                    contentDescription = "Home"
-                )
-
-                Icon(
-                    painter = painterResource(notificationPath),
-                    contentDescription = "Home"
-                )
-
-                Icon(
-                    painter = painterResource(profilePath),
-                    contentDescription = "Home"
-                )
-
+                IconButton(
+                    onClick = {
+                        toHomeScreen()
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(homePath),
+                        contentDescription = "home"
+                    )
+                }
+                IconButton(
+                    onClick = {
+                        toFavoriteScreen()
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(favoritePath),
+                        contentDescription = "favorite"
+                    )
+                }
+                IconButton(
+                    onClick = {
+                        toNotificationScreen()
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(notificationPath),
+                        contentDescription = "notification"
+                    )
+                }
+                IconButton(
+                    onClick = {
+                        toProfileScreen()
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(profilePath),
+                        contentDescription = "profile"
+                    )
+                }
             }
         }
 

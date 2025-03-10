@@ -44,6 +44,7 @@ fun OnboardingScreen(
     var board by remember {
         mutableStateOf(BoardingState.BOARD1)
     }
+
     val brush = Brush.linearGradient(
         colors = listOf(
             Color(0xFF48B2E7),

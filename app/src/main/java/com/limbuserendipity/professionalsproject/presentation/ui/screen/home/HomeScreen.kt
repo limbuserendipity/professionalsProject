@@ -15,16 +15,10 @@ import com.limbuserendipity.professionalsproject.presentation.ui.component.AppBo
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(
+fun HomeScreen(paddingValues: PaddingValues) {
 
-){
-    Scaffold(
-        bottomBar = {
-            AppBottomBar()
-        }
-    ) { paddingValues ->
-        HomeContent(paddingValues)
-    }
+    HomeContent(paddingValues)
+
 }
 @Composable
 fun HomeContent(paddingValues: PaddingValues) {
