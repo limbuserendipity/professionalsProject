@@ -23,7 +23,7 @@ import com.limbuserendipity.professionalsproject.presentation.ui.screen.splash_s
 @Composable
 fun Navigation(owner: ViewModelStoreOwner) {
     var navState by remember {
-        mutableStateOf(NavState.SIGN_IN)
+        mutableStateOf(NavState.ONBOARDING)
     }
 
     val authUseCase = AuthenticationUseCase(RepositoryFactory.getAuthenticationRepositoryImpl())
@@ -36,14 +36,12 @@ fun Navigation(owner: ViewModelStoreOwner) {
 
     when(navState){
         NavState.SIGN_IN -> {
-//            SignInScreen(
-//                viewmodel = viewModel,
-//                toHomeScreen = {
-//                    navState = NavState.SPLASH
-//                }
-//            )
-
-            HomeScreen()
+            SignInScreen(
+                viewmodel = viewModel,
+                toHomeScreen = {
+                    navState = NavState.SPLASH
+                }
+            )
         }
         NavState.SPLASH -> {
             SplashScreen(

@@ -1,6 +1,9 @@
 package com.limbuserendipity.professionalsproject.presentation.ui.screen.onboarding
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -13,7 +16,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -49,6 +51,7 @@ fun OnboardingScreen(
             Color(0xFF2B6B8B),
         )
     )
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -56,7 +59,9 @@ fun OnboardingScreen(
     ) {
 
         AnimatedVisibility(
-            visible = board == BoardingState.BOARD1
+            visible = board == BoardingState.BOARD1,
+            enter = fadeIn(animationSpec = tween(durationMillis = 300)),
+            exit = fadeOut(animationSpec = tween(durationMillis = 300))
         ) {
 
             Onboard1(
@@ -68,7 +73,9 @@ fun OnboardingScreen(
         }
 
         AnimatedVisibility(
-            visible = board == BoardingState.BOARD2
+            visible = board == BoardingState.BOARD2,
+            enter = fadeIn(animationSpec = tween(durationMillis = 300)),
+            exit = fadeOut(animationSpec = tween(durationMillis = 300))
         ) {
 
             Onboard2(
@@ -80,7 +87,9 @@ fun OnboardingScreen(
         }
 
         AnimatedVisibility(
-            visible = board == BoardingState.BOARD3
+            visible = board == BoardingState.BOARD3,
+            enter = fadeIn(animationSpec = tween(durationMillis = 300)),
+            exit = fadeOut(animationSpec = tween(durationMillis = 300))
         ) {
 
             Onboard3(
